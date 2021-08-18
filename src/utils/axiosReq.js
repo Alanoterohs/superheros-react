@@ -14,7 +14,7 @@ export const addTeam = (id) => {
     // }
     // else {
       const { image, name, powerstats } = response.data;
-      return { image, name, powerstats };
+      return response.data;
     // }
   });
 };

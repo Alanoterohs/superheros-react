@@ -20,7 +20,7 @@ function CardHero({ id, name, image, powerstats, setIdHero }) {
           />
           <br/>
           <br/>
-          <button className="btn btn-outline-success">Add Team</button>
+          <button className="btn btn-outline-success m-1">Add Team</button>
         </form>
       </div>
   );

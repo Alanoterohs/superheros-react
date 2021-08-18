@@ -1,16 +1,15 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { searchByName } from '../utils/axiosReq';
 import CardHero from '../components/CardHero';
 import Team from '../team/team';
 
-function Home(){
+function Home() {
   const [heros, setHeros] = useState([]);
   const [name, setName] = useState('');
   const [idHero, setIdHero] = useState('');
 
   useEffect(() => {
     searchByName(name).then(response => {
-      console.log(response);
       if (response.data.error) {
         return true;
       } else {
@@ -39,6 +38,11 @@ function Home(){
                     />
           ))}
       <div>
+        <h1
+          className= "text-center"
+          style = {{ color: 'grey' }}
+          >
+          TEAM</h1>
         <Team
           idHero = {idHero}
           />
@@ -46,4 +50,5 @@ function Home(){
     </div>
   );
 }
+
 export default Home;
