@@ -13,7 +13,6 @@ export const addTeam = (id) => {
     //   return;
     // }
     // else {
-      const { image, name, powerstats } = response.data;
       return response.data;
     // }
   });

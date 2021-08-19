@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { searchByName } from '../utils/axiosReq';
 import CardHero from '../components/CardHero';
 import Team from '../team/team';
+import SearchBar from '../components/SearchBar';
 
 function Home() {
   const [heros, setHeros] = useState([]);
@@ -19,34 +20,31 @@ function Home() {
     });
   }, [name]);
 
+  const handleSubmit = (e, id) => {
+    e.preventDefault();
+    setIdHero(id);
+  };
+
   return (
     <div className="container text-center" style= {{ backgroundColor: '#161B22' }}>
-          <form className= "text-center" onSubmit= {(e) => e.preventDefault()}>
-            <input
-              placeholder= 'search hero'
-              value= {name}
-              onChange= {(e) => setName(e.target.value)}
-              />
-          </form>
+          <SearchBar
+            name = {name}
+            setName = {setName}
+            />
           {heros.map((data, index) => (
                   <CardHero
                     key = {index}
                     id = {data.id}
                     name = {data.name}
                     image = {data.image.url}
-                    setIdHero = {setIdHero}
+                    handleSubmit = {handleSubmit}
                     />
           ))}
-      <div>
-        <h1
-          className= "text-center"
-          style = {{ color: 'grey' }}
-          >
-          TEAM</h1>
-        <Team
-          idHero = {idHero}
-          />
-      </div>
+          <div>
+            <Team
+              idHero = {idHero}
+              />
+          </div>
     </div>
   );
 }
