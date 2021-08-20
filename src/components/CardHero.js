@@ -1,4 +1,4 @@
-function CardHero({ id, name, image, powerstats, handleSubmit }) {
+function CardHero({ id, name, image, powerstats, handleSubmit}) {
 
   return (
       <div className="card text-white m-3 d-inline-flex text-center" style= {{ width: '15rem', backgroundColor: '#3E4247' }}>

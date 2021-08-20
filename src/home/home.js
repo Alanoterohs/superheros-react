@@ -8,6 +8,7 @@ function Home() {
   const [heros, setHeros] = useState([]);
   const [name, setName] = useState('');
   const [idHero, setIdHero] = useState('');
+  const [functionSum, setFunctionSum] = useState(false);
 
   useEffect(() => {
     searchByName(name).then(response => {
@@ -23,6 +24,8 @@ function Home() {
   const handleSubmit = (e, id) => {
     e.preventDefault();
     setIdHero(id);
+    setName(' ');
+    setFunctionSum(!functionSum);
   };
 
   return (
@@ -43,6 +46,7 @@ function Home() {
           <div>
             <Team
               idHero = {idHero}
+              functionSum = {functionSum}
               />
           </div>
     </div>
