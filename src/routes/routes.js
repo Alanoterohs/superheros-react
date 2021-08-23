@@ -1,7 +1,7 @@
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import Login from '../login/login';
 import Home from '../home/home';
 
@@ -23,3 +23,6 @@ function Routes() {
 }
 
 export default Routes;
+
+// Basicamente si la variable isAuth es cierta(la que depende de validaciones)
+//renderizo el home, caso contrario, seguimos en login

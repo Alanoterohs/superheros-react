@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 
 function Login({ setIsAuth }) {
@@ -29,17 +30,29 @@ function Login({ setIsAuth }) {
 
           onSubmit={(values, actions) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              console.log(values);
-              console.log(actions);
-              actions.setSubmitting(false);
+              //alert(JSON.stringify(values, null, 2));
+              // console.log(values);
+              // console.log(actions);
+              // actions.setSubmitting(false);
             }, 2000);
-            setIsAuth(true); //le permito cambiar de ruta hacia el Home
+
+            axios.post('http://challenge-react.alkemy.org', {
+              email: 'challenge@alkemy.org',
+              password: 'react', //los datos validos para obtener el token
+            })
+            .then((response)=> {
+              //console.log(response);
+              localStorage.setItem('token', response.data.token); //Guardo el token en el LS.
+              setIsAuth(true); //le permito cambiar de ruta hacia el Home
+            })
+            .catch((err) => {
+              alert(err); //genero la alerta al error de la Api(punto del Login)
+            });
           }}
           >
             { ({ errors, handleSubmit }) =>
               <Form>
-                    <div class="form-group">
+                    <div className="form-group">
                       <Field
                        type="email"
                        name="email"
@@ -49,10 +62,10 @@ function Login({ setIsAuth }) {
                       <ErrorMessage
                        name='email'
                        component='small'
-                       class="alert-danger" role="alert"
+                       className="alert-danger" role="alert"
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <Field
                        type="password"
                        name="password"
@@ -62,7 +75,7 @@ function Login({ setIsAuth }) {
                       <ErrorMessage
                        name='password'
                        component='small'
-                       class="alert-danger" role="alert"
+                       className="alert-danger" role="alert"
                        />
                      </div>
                     <button className="btn btn-success" type="submit">Submit</button>
