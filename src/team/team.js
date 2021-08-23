@@ -3,12 +3,11 @@ import { addTeam } from '../utils/axiosReq';
 import CardTeam from '../components/cardTeam';
 import CardDetails from '../components/CardDetails';
 
-function Team({ idHero, functionSum }) {
+function Team({ idHero }) {
 
   const [teamHeros, setTeamHeros] = useState([]);
   const [renderDetails, setRenderDetails] = useState(false);
   const [renderHero, setRenderHero] = useState(0);
-  //const [data, setData] = useState([]);
 
   useEffect(() => {
     addTeam(idHero).then(response => {
@@ -33,33 +32,27 @@ function Team({ idHero, functionSum }) {
   };
 
   let result2 = 0;
-
   let summationHeight = 0;
   let averageHeight = 0;
 
   let summationWeight = 0;
   let averageWeight = 0;
 
-  function summation() {
-    teamHeros.forEach((item, index) => {
-
+  teamHeros.forEach((item, index) => {
+      console.log(item);
       const { powerstats } = item.response;
       const { appearance } = item.response;
-
       let parseHeight = parseInt(appearance.height[1]); // Convierto el string a un entero
       summationHeight = (summationHeight + parseHeight); // sumatoria de la altura de los personajes
       averageHeight = summationHeight / (index + 1); // Obtengo el promedio
-
       //hago el mismo procedimiento pero con la masa(kg) de c/uno.
       let parseWeight = parseInt(appearance.weight[1]);
       summationWeight = summationWeight + parseWeight;
       averageWeight = summationWeight / (index + 1);
-
       result2 = result2 + parseInt(powerstats.combat) + parseInt(powerstats.durability) +
       parseInt(powerstats.intelligence) + parseInt(powerstats.power) + parseInt(powerstats.speed) +
       parseInt(powerstats.strength); //Sumatoria de todos los powerstats
     });
-  };
 
   if (renderDetails) {
     const { response } = teamHeros[renderHero];
@@ -77,16 +70,12 @@ function Team({ idHero, functionSum }) {
     );
   }
 
-  if (functionSum) {
-    summation();
-  }
-
   return (
       <div>
         <h1 className= "text-center" style = {{ color: 'white' }}> TEAM </h1>
         <h4 className= "text-center" style = {{ color: 'white' }}> Sumatoria de Powerstats: {result2}</h4>
-        <h4 className= "text-center" style = {{ color: 'white' }}> Altura sin promedio: {averageHeight.toFixed(2)}</h4>
-        <h4 className= "text-center" style = {{ color: 'white' }}> Peso sin promedio: {averageWeight.toFixed(2)}</h4>
+        <h4 className= "text-center" style = {{ color: 'white' }}> Altura promedio del equipo: {averageHeight.toFixed(2)}</h4>
+        <h4 className= "text-center" style = {{ color: 'white' }}> Peso promedio del equipo: {averageWeight.toFixed(2)}</h4>
         {teamHeros.map((heros, index) => (
             <CardTeam
               key= {index}

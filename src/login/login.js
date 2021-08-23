@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 
-function Login() {
+function Login({ setIsAuth }) {
   return (
     <div className="container my-auto">
-      <h2>Form Login</h2>
+      <h2 className="text-center m-3" style= {{ color: 'white' }}>Form Login</h2>
       <div className="row">
         <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12">
           <Formik
@@ -34,10 +34,10 @@ function Login() {
               console.log(actions);
               actions.setSubmitting(false);
             }, 2000);
+            setIsAuth(true); //le permito cambiar de ruta hacia el Home
           }}
           >
-            {
-              ({ errors, handleSubmit }) =>
+            { ({ errors, handleSubmit }) =>
               <Form>
                     <div class="form-group">
                       <Field

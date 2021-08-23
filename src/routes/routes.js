@@ -1,20 +1,25 @@
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-
-//import Login from '../login/login';
+import React, { Fragment, useEffect, useState } from 'react';
+import Login from '../login/login';
 import Home from '../home/home';
 
 
 function Routes() {
+  const [isAuth, setIsAuth] = useState(false);
+
   return (
-    <Router>
-        <Switch>
-          <Route path="/" component={Home} />
-        </Switch>
-    </Router>
+    <Fragment>
+      <Router>
+          <Switch>
+          { isAuth ?
+            (<Route path="/"><Home/></Route>)
+            : (<Route path="/"><Login setIsAuth={setIsAuth}/></Route>) }
+          </Switch>
+      </Router>
+    </Fragment>
   );
 }
-// <Route exact path="/login" component={Login} />
 
 export default Routes;

@@ -2,8 +2,9 @@ function SearchBar({ name, setName }) {
   return (
     <form className= "text-center" onSubmit= {(e) => e.preventDefault()}>
       <input
-        placeholder= 'search hero'
+        placeholder= 'Search hero...'
         value= {name}
+        className = 'input'
         onChange= {(e) => setName(e.target.value)}
         />
     </form>

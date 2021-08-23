@@ -8,7 +8,6 @@ function Home() {
   const [heros, setHeros] = useState([]);
   const [name, setName] = useState('');
   const [idHero, setIdHero] = useState('');
-  const [functionSum, setFunctionSum] = useState(false);
 
   useEffect(() => {
     searchByName(name).then(response => {
@@ -21,11 +20,11 @@ function Home() {
     });
   }, [name]);
 
-  const handleSubmit = (e, id) => {
+  const handleSubmit = (e, id, index) => {
     e.preventDefault();
     setIdHero(id);
-    setName(' ');
-    setFunctionSum(!functionSum);
+    setName('');
+    setHeros([]);
   };
 
   return (
@@ -37,6 +36,7 @@ function Home() {
           {heros.map((data, index) => (
                   <CardHero
                     key = {index}
+                    index = {index}
                     id = {data.id}
                     name = {data.name}
                     image = {data.image.url}
@@ -46,7 +46,6 @@ function Home() {
           <div>
             <Team
               idHero = {idHero}
-              functionSum = {functionSum}
               />
           </div>
     </div>
