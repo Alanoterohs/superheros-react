@@ -3,7 +3,7 @@ import { addTeam } from '../utils/axiosReq';
 import CardTeam from '../components/cardTeam';
 import CardDetails from '../components/CardDetails';
 
-function Team({ idHero }) {
+function Team({ idHero, setMaxTeam, MaxTeam }) {
 
   const [teamHeros, setTeamHeros] = useState([]);
   const [renderDetails, setRenderDetails] = useState(false);
@@ -31,6 +31,16 @@ function Team({ idHero }) {
     setRenderDetails(!renderDetails);
   };
 
+  const handleDelete = (e, indexRemove) => {
+    e.preventDefault();
+    let filterHero = teamHeros.filter((v, index) => index !== indexRemove);
+    setTeamHeros(filterHero)
+  };
+
+  if (teamHeros.length > 5) {
+    setMaxTeam(!MaxTeam);
+  }
+
   let result2 = 0;
   let summationHeight = 0;
   let averageHeight = 0;
@@ -44,7 +54,9 @@ function Team({ idHero }) {
       const { appearance } = item.response;
       let parseHeight = parseInt(appearance.height[1]); // Convierto el string a un entero
       summationHeight = (summationHeight + parseHeight); // sumatoria de la altura de los personajes
+      console.log(summationHeight);
       averageHeight = summationHeight / (index + 1); // Obtengo el promedio
+      console.log(averageHeight);
       //hago el mismo procedimiento pero con la masa(kg) de c/uno.
       let parseWeight = parseInt(appearance.weight[1]);
       summationWeight = summationWeight + parseWeight;
@@ -66,16 +78,21 @@ function Team({ idHero }) {
         eyes = {response.appearance['eye-color']}
         hair = {response.appearance['hair-color']}
         base = {response.work.base}
-        handleSubmit={handleSubmit}/>
+        handleSubmit={handleSubmit}
+        />
+
     );
   }
 
   return (
       <div>
         <h1 className= "text-center" style = {{ color: 'white' }}> TEAM </h1>
-        <h4 className= "text-center" style = {{ color: 'white' }}> Sumatoria de Powerstats: {result2}</h4>
-        <h4 className= "text-center" style = {{ color: 'white' }}> Altura promedio del equipo: {averageHeight.toFixed(2)}</h4>
-        <h4 className= "text-center" style = {{ color: 'white' }}> Peso promedio del equipo: {averageWeight.toFixed(2)}</h4>
+        <h4 className= "text-center"
+          style = {{ color: 'white' }}> Powerstats del equipo:<span style = {{ color: 'white', margin: '0.5rem' }}>{result2}</span></h4>
+        <h4 className= "text-center"
+          style = {{ color: 'white' }}> Altura promedio del equipo: <span style = {{ color: 'white', margin: '0.5rem' }}>{averageHeight.toFixed(2)} cm</span></h4>
+        <h4 className= "text-center"
+          style = {{ color: 'white' }}> Peso promedio del equipo: <span style = {{ color: 'white', margin: '0.5rem' }}>{averageWeight.toFixed(2)} kg</span></h4>
         {teamHeros.map((heros, index) => (
             <CardTeam
               key= {index}
@@ -89,6 +106,7 @@ function Team({ idHero }) {
               speed = {heros.response.powerstats.speed}
               strength = {heros.response.powerstats.strength}
               handleSubmit = {handleSubmit}
+              handleDelete= {handleDelete}
               />
         ))}
       </div>

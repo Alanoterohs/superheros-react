@@ -8,11 +8,12 @@ function Home() {
   const [heros, setHeros] = useState([]);
   const [name, setName] = useState('');
   const [idHero, setIdHero] = useState('');
+  const [maxTeam, setMaxTeam] = useState(false)
 
   useEffect(() => {
     searchByName(name).then(response => {
       if (response.data.error) {
-        return true;
+        console.log(response.data.error);
       } else {
         const data = [response.data.results];
         setHeros(...data);
@@ -27,11 +28,15 @@ function Home() {
     setHeros([]);
   };
 
+  // name = {name}
+  // setName = {setName}
+  // limitHero = {false}
   return (
     <div className="container text-center" style= {{ backgroundColor: '#161B22' }}>
           <SearchBar
-            name = {name}
-            setName = {setName}
+            setName={setName}
+            setMaxTeam={setMaxTeam}
+            maxTeam={maxTeam}
             />
           {heros.map((data, index) => (
                   <CardHero
@@ -46,6 +51,8 @@ function Home() {
           <div>
             <Team
               idHero = {idHero}
+              setMaxTeam={setMaxTeam}
+              maxTeam={maxTeam}
               />
           </div>
     </div>

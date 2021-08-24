@@ -1,15 +1,77 @@
-function SearchBar({ name, setName }) {
+import { Formik, ErrorMessage, Field, Form } from 'formik';
+
+function SearchBar({ setName, setMaxTeam, maxTeam }) {
   return (
-    <form className= "text-center" onSubmit= {(e) => e.preventDefault()}>
-      <input
-        placeholder= 'Search hero...'
-        value= {name}
-        className = 'input'
-        onChange= {(e) => setName(e.target.value)}
-        />
-    </form>
+    <div className="container">
+      <h3 className="text-center m-3" style= {{ color: 'white' }}>Search Hero</h3>
+      <div className="row">
+        <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12">
+        <Formik
+        initialValues={{
+          name: '',
+          maxTeam: false,
+        }}
+        validate = { values => {
+          let errors = {};
+          if (!values.name) {
+            errors.name = 'Coloque el nombre del heroe que desea buscar :)';
+          };
+          if (maxTeam) {
+            errors.name = 'puede tener como máximo 6 integrantes su equipo';
+          };
+          return errors;
+        }}
+
+        onSubmit={(values, actions) => {
+          setTimeout(() => {
+            //alert(JSON.stringify(values, null, 2));
+            // console.log(values);
+            // console.log(actions);
+            // actions.setSubmitting(false);
+          }, 2000);
+          console.log(values);
+          setName(values.name);
+        }}
+        >
+          { ({ errors, handleSubmit }) =>
+            <Form>
+                  <div className="form-group">
+                    <Field
+                     type="name"
+                     name="name"
+                     placeholder="Search Hero..."
+                     className="form-control"
+                    />
+                    <ErrorMessage
+                     name='name'
+                     component='small'
+                     className="alert-danger" role="alert"
+                    />
+                    <button className="btn btn-success m-1" type="submit">Search</button>
+                  </div>
+            </Form>
+          }
+        </Formik>
+        </div>
+      </div>
+  </div>
   );
 }
+<button className="button-general" type="submit">Search</button>
+
+
+// <form className= "text-center" onSubmit= {(e) => e.preventDefault()}>
+// { (true)
+//   ?
+//   <input
+//   placeholder= 'Search hero...'
+//   value= {name}
+//   className = 'input'
+//   onChange= {(e) => setName(e.target.value)}
+//   />
+//   : <h1 style= {{ color: 'white' }}> COMO MÁXIMO PUEDES TENER 6 HEROES EN TU EQUIPO </h1>
+// }
+//</form>
 
 export default SearchBar;
 
