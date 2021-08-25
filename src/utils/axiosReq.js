@@ -9,18 +9,6 @@ export const searchByName = (name) => {
 export const addTeam = (id) => {
   return axios.get(urlSuperHeros + id)
   .then((response) => {
-    // if (response.data.error) {
-    //   return;
-    // }
-    // else {
-      return response.data;
-    // }
+    return response.data;
   });
 };
-
-// export const detailsHero = (id) => {
-//   return axios.get(urlSuperHeros + id)
-//   .then((response) => {
-//
-//   })
-// }

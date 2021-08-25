@@ -50,21 +50,6 @@ function SearchBar({ name, setName, setMaxTeam, maxTeam }) {
   </div>
   );
 }
-<button className="button-general" type="submit">Search</button>
-
-
-// <form className= "text-center" onSubmit= {(e) => e.preventDefault()}>
-// { (true)
-//   ?
-//   <input
-//   placeholder= 'Search hero...'
-//   value= {name}
-//   className = 'input'
-//   onChange= {(e) => setName(e.target.value)}
-//   />
-//   : <h1 style= {{ color: 'white' }}> COMO MÁXIMO PUEDES TENER 6 HEROES EN TU EQUIPO </h1>
-// }
-//</form>
 
 export default SearchBar;
 

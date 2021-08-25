@@ -1,11 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Formik, ErrorMessage, Field, Form } from 'formik';
-// col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12
-// style = {{ width: 239, height: 300 }}
-// <img className="images-login" style = {{ width: 40  , height: 40 }} src={'https://source.unsplash.com/300x300/?superheroes'}/>
-// <h2 className="text-center" style= {{ color: 'white' }}>Form Login</h2>
+
 function Login({ setIsAuth }) {
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return (
     <div className="container">
       <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12 rounded" style = {{ backgroundColor: '#0f0e17' }}>
@@ -30,8 +28,10 @@ function Login({ setIsAuth }) {
             validate = { values => {
               let errors = {};
               if (!values.email) {
-                errors.email = 'email is required!';
-              };
+                errors.email = 'El email es requerido!';
+              } else if (regex.test(values.mail)) {
+                errors.email = 'Escribe un email válido!';
+              }
 
               if (!values.password) {
                 errors.password = 'password is required!';
