@@ -8,7 +8,7 @@ function Home() {
   const [heros, setHeros] = useState([]);
   const [name, setName] = useState('');
   const [idHero, setIdHero] = useState('');
-  const [maxTeam, setMaxTeam] = useState(false)
+  const [maxTeam, setMaxTeam] = useState(false);
 
   useEffect(() => {
     searchByName(name).then(response => {
@@ -28,12 +28,10 @@ function Home() {
     setHeros([]);
   };
 
-  // name = {name}
-  // setName = {setName}
-  // limitHero = {false}
   return (
     <div className="container text-center" style= {{ backgroundColor: '#0f0e17' }}>
           <SearchBar
+            name = {name}
             setName={setName}
             setMaxTeam={setMaxTeam}
             maxTeam={maxTeam}

@@ -34,33 +34,35 @@ function Team({ idHero, setMaxTeam, MaxTeam }) {
   const handleDelete = (e, indexRemove) => {
     e.preventDefault();
     let filterHero = teamHeros.filter((v, index) => index !== indexRemove);
-    setTeamHeros(filterHero)
+    setTeamHeros(filterHero);
   };
 
   if (teamHeros.length > 5) {
     setMaxTeam(!MaxTeam);
-  }
+  } else {
+    setMaxTeam(false);
+  };
+
 
   let result2 = 0;
   let summationHeight = 0;
   let averageHeight = 0;
-
   let summationWeight = 0;
   let averageWeight = 0;
 
   teamHeros.forEach((item, index) => {
-      console.log(item);
       const { powerstats } = item.response;
       const { appearance } = item.response;
+
       let parseHeight = parseInt(appearance.height[1]); // Convierto el string a un entero
       summationHeight = (summationHeight + parseHeight); // sumatoria de la altura de los personajes
-      console.log(summationHeight);
       averageHeight = summationHeight / (index + 1); // Obtengo el promedio
-      console.log(averageHeight);
+
       //hago el mismo procedimiento pero con la masa(kg) de c/uno.
       let parseWeight = parseInt(appearance.weight[1]);
       summationWeight = summationWeight + parseWeight;
       averageWeight = summationWeight / (index + 1);
+
       result2 = result2 + parseInt(powerstats.combat) + parseInt(powerstats.durability) +
       parseInt(powerstats.intelligence) + parseInt(powerstats.power) + parseInt(powerstats.speed) +
       parseInt(powerstats.strength); //Sumatoria de todos los powerstats
@@ -87,10 +89,8 @@ function Team({ idHero, setMaxTeam, MaxTeam }) {
   return (
       <div>
         <h1 className= "text-center" style = {{ color: 'white' }}> TEAM </h1>
-        <h4 className= "text-center"
-          > Powerstats del equipo:<span>{result2}</span></h4>
-        <h4 className= "text-center"
-          > Altura promedio del equipo: <span>{averageHeight.toFixed(2)} cm</span></h4>
+        <h4 className= "text-center"> Powerstats del equipo:<span>{result2}</span></h4>
+        <h4 className= "text-center"> Altura promedio del equipo: <span>{averageHeight.toFixed(2)} cm</span></h4>
         <h4 className= "text-center"> Peso promedio del equipo: <span>{averageWeight.toFixed(2)} kg</span></h4>
         {teamHeros.map((heros, index) => (
             <CardTeam

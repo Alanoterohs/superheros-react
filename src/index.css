@@ -151,3 +151,11 @@ border-color: #7f5af0;
 }
 
 .input::placeholder { color: white; }
+
+.images-login {
+  height: 100vh;
+  background-image: url('https://source.unsplash.com/1600x900/?architecture');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

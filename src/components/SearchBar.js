@@ -1,6 +1,6 @@
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 
-function SearchBar({ setName, setMaxTeam, maxTeam }) {
+function SearchBar({ name, setName, setMaxTeam, maxTeam }) {
   return (
     <div className="container">
       <h3 className="text-center m-3" style= {{ color: 'white' }}>Search Hero</h3>
@@ -23,13 +23,6 @@ function SearchBar({ setName, setMaxTeam, maxTeam }) {
         }}
 
         onSubmit={(values, actions) => {
-          setTimeout(() => {
-            //alert(JSON.stringify(values, null, 2));
-            // console.log(values);
-            // console.log(actions);
-            // actions.setSubmitting(false);
-          }, 2000);
-          console.log(values);
           setName(values.name);
         }}
         >
@@ -47,8 +40,8 @@ function SearchBar({ setName, setMaxTeam, maxTeam }) {
                      component='small'
                      className="alert-danger" role="alert"
                     />
-                    <button className="btn btn-success m-1" type="submit">Search</button>
                   </div>
+                  <button className="btn btn-success m-1" type="submit">Search</button>
             </Form>
           }
         </Formik>

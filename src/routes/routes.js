@@ -7,7 +7,7 @@ import Home from '../home/home';
 
 
 function Routes() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <Fragment>
