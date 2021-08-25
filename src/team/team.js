@@ -88,11 +88,10 @@ function Team({ idHero, setMaxTeam, MaxTeam }) {
       <div>
         <h1 className= "text-center" style = {{ color: 'white' }}> TEAM </h1>
         <h4 className= "text-center"
-          style = {{ color: 'white' }}> Powerstats del equipo:<span style = {{ color: 'white', margin: '0.5rem' }}>{result2}</span></h4>
+          > Powerstats del equipo:<span>{result2}</span></h4>
         <h4 className= "text-center"
-          style = {{ color: 'white' }}> Altura promedio del equipo: <span style = {{ color: 'white', margin: '0.5rem' }}>{averageHeight.toFixed(2)} cm</span></h4>
-        <h4 className= "text-center"
-          style = {{ color: 'white' }}> Peso promedio del equipo: <span style = {{ color: 'white', margin: '0.5rem' }}>{averageWeight.toFixed(2)} kg</span></h4>
+          > Altura promedio del equipo: <span>{averageHeight.toFixed(2)} cm</span></h4>
+        <h4 className= "text-center"> Peso promedio del equipo: <span>{averageWeight.toFixed(2)} kg</span></h4>
         {teamHeros.map((heros, index) => (
             <CardTeam
               key= {index}

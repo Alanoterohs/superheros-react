@@ -7,7 +7,7 @@ function CardDetails({ name, image, height, weight, aliases, eyes, hair, base, h
           <button className= 'button-details' onSubmit = {handleSubmit}>X</button>
         </div>
           <div className= ''>
-            <div style = {{ backgroundColor: '#3E4247' }}>
+            <div style = {{ backgroundColor: '#21262D' }}>
               <img
                 style = {{ width: 239, height: 300 }}
                 className="img-rounded m-2"
@@ -15,7 +15,7 @@ function CardDetails({ name, image, height, weight, aliases, eyes, hair, base, h
                 alt={name}
                 />
             </div>
-            <div style = {{ backgroundColor: '#3E4247' }}>
+            <div style = {{ backgroundColor: '#21262D' }}>
               <h6>Name: {name}</h6>
               <h6>Altura: {height}</h6>
               <h6>Peso: {weight}</h6>

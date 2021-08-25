@@ -32,7 +32,7 @@ function Home() {
   // setName = {setName}
   // limitHero = {false}
   return (
-    <div className="container text-center" style= {{ backgroundColor: '#161B22' }}>
+    <div className="container text-center" style= {{ backgroundColor: '#0f0e17' }}>
           <SearchBar
             setName={setName}
             setMaxTeam={setMaxTeam}

@@ -3,7 +3,7 @@ function CardTeam({ index, name, image, combat, durability, intelligence, power,
   parseInt(intelligence) + parseInt(power) + parseInt(speed) + parseInt(strength);
 
   return (
-    <div className="card text-white m-3 d-inline-flex text-center" style= {{ width: '15.20rem', backgroundColor: '#21262D', border: '1px solid #010101' }}>
+    <div className="card text-white m-3 d-inline-flex text-center" style= {{ width: '15.20rem', backgroundColor: '#21262D', border: '2px solid #010101' }}>
       <form style= {{ backgroundColor: '#21262D' }} >
         <h6
         className = "m-2"
@@ -26,10 +26,10 @@ function CardTeam({ index, name, image, combat, durability, intelligence, power,
         </div>
           <button
           onClick = {(e) => handleSubmit(e, index)}
-          className="btn btn-outline-success m-2"> Details </button>
+          className="button-general"> Details </button>
           <button
           onClick={(e) => handleDelete(e, index)}
-          className="btn btn-outline-danger m-2"> Delete </button>
+          className="button-delete"> Delete </button>
       </form>
     </div>
   );
