@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+  import { useState, useEffect } from 'react';
 import { addTeam } from '../utils/axiosReq';
 import CardTeam from '../components/cardTeam';
 import CardDetails from '../components/CardDetails';
@@ -11,7 +11,6 @@ function Team({ idHero, setMaxTeam, MaxTeam }) {
 
   useEffect(() => {
     addTeam(idHero).then(response => {
-        //console.log(response);
         if (response.name === undefined) {
           return true;
         }
@@ -21,7 +20,6 @@ function Team({ idHero, setMaxTeam, MaxTeam }) {
               },
             ]
           );
-        //console.log(teamHeros);
       });
   }, [idHero]);
 

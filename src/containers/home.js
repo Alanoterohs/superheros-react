@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { searchByName } from '../utils/axiosReq';
 import CardHero from '../components/CardHero';
-import Team from '../team/team';
+import Team from './team';
 import SearchBar from '../components/SearchBar';
 
 function Home() {

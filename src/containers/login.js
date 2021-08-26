@@ -7,7 +7,7 @@ function Login({ setIsAuth }) {
   return (
     <div className="container">
       <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12 rounded" style = {{ backgroundColor: '#0f0e17' }}>
-        <div class="col-md-6 mx-auto text-center m-5">
+        <div className="col-md-6 mx-auto text-center m-5">
             <h1 style = {{ color: 'white' }}>
                  Superheroes Team
             </h1>

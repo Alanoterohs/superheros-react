@@ -1,13 +1,19 @@
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import React, { Fragment, useState } from 'react';
-import Login from '../login/login';
-import Home from '../home/home';
+import React, { Fragment, useState, useEffect } from 'react';
+import Login from '../containers/login';
+import Home from '../containers/home';
 
 
 function Routes() {
   const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if (window.localStorage.getItem('token')) {
+      setIsAuth(true);
+    }
+  }, [isAuth])
 
   return (
     <Fragment>
